@@ -77,21 +77,21 @@ const checkWin = () => {
 
     const letter = document.querySelectorAll('.letter');
     const show = document.querySelectorAll('.show');
-    const title = document.querySelector('.title');
+    const h3 = document.querySelector('.result');
     if(show.length === letter.length){
-        overlay.className = 'win';
-        title.textContent= 'You Won'; 
+        overlay.className = 'win'; 
+        h3.textContent = 'You Won';
         startGameBtn.textContent = 'Play Again?';
         overlay.style.display = 'flex';
     }
     if(missed >= 5){
         overlay.className = 'lose';
-        title.textContent= 'You lost'; 
+        h3.textContent = 'You lost';
         startGameBtn.textContent = 'Play Again?';
         overlay.style.display = 'flex';
     }
 
-    reset();
+        reset();
 }
 
 const reset = () => {
@@ -102,10 +102,13 @@ const reset = () => {
         let phrase = document.querySelector('ul');
         phrase.innerHTML = '';
 
-        const liveHeart = document.querySelector('.tries img');
+        const liveHeart = document.querySelectorAll('.tries img');
+        
         for(let i =0; i< liveHeart.length;i++){
-            liveHeart[i].setAttribute('src','images/liveHeart.png');
+           
+            liveHeart[i].src = 'images/liveHeart.png';
         }
+
         let removeChosen = document.querySelectorAll('.chosen');
         for(let i =0;i<removeChosen.length;i++){
             removeChosen[i].classList.remove('chosen');
