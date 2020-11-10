@@ -3,7 +3,7 @@ const phraseDiv = document.getElementById('phrase');
 const startGameBtn = document.querySelector('.btn__reset');
 var missed = 0;
 
-var phrases = ['cat','bird','fish','lion','snake'];
+var phrases = ['cat s','bird s','fish s','lion s','snake s'];
 
 startGameBtn.addEventListener('click', () => {
     const overlay = document.getElementById('overlay');
@@ -25,7 +25,7 @@ const addPhraseToDisplay = arr => {
         
         listItem.innerHTML = arr[i];
         ul.appendChild(listItem);
-        if(listItem === ' '){
+        if(listItem.textContent === ' '){
             listItem.className = 'space';
         }else{
             listItem.className = 'letter';
@@ -80,13 +80,39 @@ const checkWin = () => {
     const title = document.querySelector('.title');
     if(show.length === letter.length){
         overlay.className = 'win';
-        
         title.textContent= 'You Won'; 
+        startGameBtn.textContent = 'Play Again?';
         overlay.style.display = 'flex';
     }
     if(missed >= 5){
         overlay.className = 'lose';
         title.textContent= 'You lost'; 
+        startGameBtn.textContent = 'Play Again?';
         overlay.style.display = 'flex';
     }
+
+    reset();
+}
+
+const reset = () => {
+    startGameBtn.addEventListener('click', ()=>{
+        overlay.className = 'start';
+        missed = 0;
+
+        let phrase = document.querySelector('ul');
+        phrase.innerHTML = '';
+
+        const liveHeart = document.querySelector('.tries img');
+        for(let i =0; i< liveHeart.length;i++){
+            liveHeart[i].setAttribute('src','images/liveHeart.png');
+        }
+        let removeChosen = document.querySelectorAll('.chosen');
+        for(let i =0;i<removeChosen.length;i++){
+            removeChosen[i].classList.remove('chosen');
+            removeChosen[i].disabled = false;
+        }
+
+        const phraseArray = getRandomPhraseAsArray(phrases);
+        addPhraseToDisplay(phraseArray);
+    });
 }
