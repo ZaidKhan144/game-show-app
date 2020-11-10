@@ -3,7 +3,7 @@ const phraseDiv = document.getElementById('phrase');
 const startGameBtn = document.querySelector('.btn__reset');
 var missed = 0;
 
-var phrases = ['cat','dog','fish','lion','snake'];
+var phrases = ['cat','bird','fish','lion','snake'];
 
 startGameBtn.addEventListener('click', () => {
     const overlay = document.getElementById('overlay');
@@ -63,6 +63,30 @@ qwertyDiv.addEventListener('click', (e) =>{
             buttonPressed.disabled = true;
         }
         const letterFound = checkLetter(buttonPressed);
+        const tries = document.querySelectorAll('.tries img');
+        
+        if(letterFound === null){
+            tries[missed].src = 'images/lostHeart.png';
+            missed++;
+        }
     }
-    
+    checkWin();
 });
+
+const checkWin = () => {
+
+    const letter = document.querySelectorAll('.letter');
+    const show = document.querySelectorAll('.show');
+    const title = document.querySelector('.title');
+    if(show.length === letter.length){
+        overlay.className = 'win';
+        
+        title.textContent= 'You Won'; 
+        overlay.style.display = 'flex';
+    }
+    if(missed >= 5){
+        overlay.className = 'lose';
+        title.textContent= 'You lost'; 
+        overlay.style.display = 'flex';
+    }
+}
