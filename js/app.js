@@ -1,6 +1,6 @@
 const qwertyDiv = document.getElementById('qwerty');
 const phraseDiv = document.getElementById('phrase');
-const startGameBtn = document.getElementsByClassName('btn__reset');
+const startGameBtn = document.querySelector('.btn__reset');
 var missed = 0;
 
 var phrases = ['cat','dog','fish','lion','snake'];
@@ -8,8 +8,8 @@ var phrases = ['cat','dog','fish','lion','snake'];
 startGameBtn.addEventListener('click', () => {
     const overlay = document.getElementById('overlay');
     overlay.style.display = 'none';
-
 });
+
 
 const getRandomPhraseAsArray = arr =>{
     var randomNum = Math.floor(Math.random() * phrases.length);
@@ -20,10 +20,10 @@ const getRandomPhraseAsArray = arr =>{
 const addPhraseToDisplay = arr => {
     
     for(let i =0 ; i<arr.length;i++){
-        const listItem = document.createElement('li');
-        const ul = document.getElementsByTagName('ul');
+        var listItem = document.createElement('li');
+        const ul = document.querySelector('ul');
         
-        listItem = arr[i];
+        listItem.innerHTML = arr[i];
         ul.appendChild(listItem);
         if(listItem === ' '){
             listItem.className = 'space';
@@ -41,15 +41,28 @@ addPhraseToDisplay(phraseArray);
 const checkLetter = button => {
 
     const checkLetter = document.querySelectorAll('li');
-    const found = null;
+    var found = null;
 
     for(let i =0; i<checkLetter.length;i++){
 
         if(button.textContent === checkLetter[i].textContent){
-            checkLetter.classList.add('show');
-            found = textContent.button;
+            checkLetter[i].classList.add('show');
+            found = button;
         }
     }
-    return match;
+    return found;
 }
 
+qwertyDiv.addEventListener('click', (e) =>{
+    
+    if(e.target.tagName === 'BUTTON'){
+       const buttonPressed = e.target;
+        buttonPressed.className = 'chosen';
+        
+        if(buttonPressed.className === 'chosen'){
+            buttonPressed.disabled = true;
+        }
+        const letterFound = checkLetter(buttonPressed);
+    }
+    
+});
