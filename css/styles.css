@@ -1,6 +1,8 @@
 /* Main styles */
 @import url('https://fonts.googleapis.com/css?family=Open+Sans:400,700&Roboto:300');
-
+@import url('https://fonts.googleapis.com/css2?family=Teko:wght@600&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Yanone+Kaffeesatz:wght@500&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Caveat:wght@700&display=swap');
 /* Variables */
 
 :root {
@@ -27,6 +29,8 @@ body {
   flex-direction: column;
   display: flex;
   height: 100vh;
+  background: rgb(58,97,134);
+  background: linear-gradient(87deg, rgba(58,97,134,1) 0%, rgba(137,37,62,1) 100%);
 }
 
 li, ol, ul {
@@ -48,11 +52,16 @@ button {
   padding: .5rem 1rem;
   color: var(--color-keys);
   font-size: var(--font-size-medium);
-  background-color: var(--color-keys-light);
-  border-radius: 5px;
+  background-color: #ac9172;
+  border-radius: 10px;
   -webkit-transition: var(--transition);
   -o-transition: var(--transition);
   transition: var(--transition);
+  cursor: pointer;
+}
+button:hover{
+  background-color: #cfcccc;
+  transform: scale(1.1);
 }
 
 .main-container {
@@ -62,6 +71,7 @@ button {
   height: 100%;
   max-height: 900px;
   text-align: center;
+  
 }
 
 .section {
@@ -73,12 +83,14 @@ button {
 
 .header {
   color: var(--color-start);
+  color: #fff;
+  font-family: 'Teko', sans-serif;
 }
 
 /* Phrase */
 
 .letter {
-  font-size: var(--font-size-medium);
+  font-size: 30px;
   height: 65px;
   width: 65px;
   padding: 20px 1px 0 1px;
@@ -86,6 +98,7 @@ button {
   color: transparent;
   background: var(--color-neutral-light);
   border-radius: 5px;
+  user-select: none;
 }
 
 .space {
@@ -93,9 +106,30 @@ button {
 }
 
 .show {
-  color: #000;
-  background-color: #76CE82;
-  transition: all .5s ease-out;
+  color: #fff;
+  background-color: #92534e;
+  animation: shake 0.82s cubic-bezier(.36,.07,.19,.97) both;
+  transform: translate3d(0, 0, 0);
+  backface-visibility: hidden;
+  perspective: 1000px;
+}
+
+@keyframes shake {
+  10%, 90% {
+    transform: translate3d(-1px, 0, 0);
+  }
+  
+  20%, 80% {
+    transform: translate3d(2px, 0, 0);
+  }
+
+  30%, 50%, 70% {
+    transform: translate3d(-4px, 0, 0);
+  }
+
+  40%, 60% {
+    transform: translate3d(4px, 0, 0);
+  }
 }
 
 /* Keyboard */
@@ -106,7 +140,7 @@ button {
 }
 
 .chosen {
-  background: var(--color-neutral);
+  background-color: #43856c;
   border-radius: 5px;
   font-size: var(--font-size-medium);
   color: #FFFFFF;
@@ -118,6 +152,9 @@ button {
   background: #FFFFFF;
   border-radius: 5px;
   font-size: var(--font-size-medium);
+  font-family: 'Yanone Kaffeesatz', sans-serif;
+  letter-spacing: 2px;
+  font-weight: bold;
 }
 
 /* Overlay */
@@ -137,10 +174,13 @@ button {
 
 .title {
   color: #FFF;
+  font-family: 'Teko', sans-serif;
 }
 
 .start {
-  background-color: var(--color-start);
+  
+  background: rgb(48,67,82);
+  background: linear-gradient(87deg, rgba(48,67,82,1) 0%, rgba(215,210,204,1) 100%);
 }
 
 .start a {
@@ -148,7 +188,9 @@ button {
 }
 
 .win {
-  background-color: var(--color-win);
+ 
+  background: rgb(61,126,170);
+  background: linear-gradient(87deg, rgba(61,126,170,1) 0%, rgba(255,228,122,1) 100%);
 }
 
 .win a {
@@ -156,9 +198,16 @@ button {
 }
 
 .lose {
-  background-color: var(--color-lose);
+  
+  background: rgb(19,106,138);
+  background: linear-gradient(87deg, rgba(19,106,138,1) 0%, rgba(38,120,113,1) 100%);
 }
 
 .lose a {
   color: var(--color-lose);
+}
+
+.result{
+  font-family: 'Caveat', cursive;
+  font-size: 2em;
 }

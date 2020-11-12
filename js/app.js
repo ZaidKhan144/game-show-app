@@ -1,13 +1,24 @@
 const qwertyDiv = document.getElementById('qwerty');
 const phraseDiv = document.getElementById('phrase');
 const startGameBtn = document.querySelector('.btn__reset');
+const ul = document.querySelector('ul');
 var missed = 0;
 
-var phrases = ['cat s','bird s','fish s','lion s','snake s'];
+var phrases = ['ass aa dd','ass aa dd','ass aa dd','ass aa dd','a'];
+
+$("div button").mouseenter(function(){
+	$("<audio></audio>").attr({ 
+		'src':'audio/blop2.mp3', 
+		'volume':0.4,
+		'autoplay':'autoplay'
+	}).appendTo("body");
+});
+
 
 startGameBtn.addEventListener('click', () => {
     const overlay = document.getElementById('overlay');
     overlay.style.display = 'none';
+
 });
 
 
@@ -21,7 +32,7 @@ const addPhraseToDisplay = arr => {
     
     for(let i =0 ; i<arr.length;i++){
         var listItem = document.createElement('li');
-        const ul = document.querySelector('ul');
+        
         
         listItem.innerHTML = arr[i];
         ul.appendChild(listItem);
@@ -48,6 +59,7 @@ const checkLetter = button => {
         if(button.textContent === checkLetter[i].textContent){
             checkLetter[i].classList.add('show');
             found = button;
+            // button.style.backgroundColor = 'black';
         }
     }
     return found;
@@ -61,6 +73,7 @@ qwertyDiv.addEventListener('click', (e) =>{
         
         if(buttonPressed.className === 'chosen'){
             buttonPressed.disabled = true;
+
         }
         const letterFound = checkLetter(buttonPressed);
         const tries = document.querySelectorAll('.tries img');
@@ -78,17 +91,20 @@ const checkWin = () => {
     const letter = document.querySelectorAll('.letter');
     const show = document.querySelectorAll('.show');
     const h3 = document.querySelector('.result');
+    const phraseDiv = document.getElementById('phrase');
     if(show.length === letter.length){
         overlay.className = 'win'; 
-        h3.textContent = 'You Won';
-        startGameBtn.textContent = 'Play Again?';
+        h3.textContent = 'You Won, Nice One!';
+        startGameBtn.textContent = 'One More Now';
         overlay.style.display = 'flex';
+        phraseDiv.style.display = 'none';
     }
     if(missed >= 5){
         overlay.className = 'lose';
-        h3.textContent = 'You lost';
-        startGameBtn.textContent = 'Play Again?';
+        h3.textContent = 'LOL You Lost!';
+        startGameBtn.textContent = 'No, I got this.';
         overlay.style.display = 'flex';
+        phraseDiv.style.display = 'none';
     }
 
         reset();
@@ -99,8 +115,8 @@ const reset = () => {
         overlay.className = 'start';
         missed = 0;
 
-        let phrase = document.querySelector('ul');
-        phrase.innerHTML = '';
+        ul.textContent = '';
+        phraseDiv.style.display = '';
 
         const liveHeart = document.querySelectorAll('.tries img');
         
@@ -114,6 +130,7 @@ const reset = () => {
             removeChosen[i].classList.remove('chosen');
             removeChosen[i].disabled = false;
         }
+        
 
         const phraseArray = getRandomPhraseAsArray(phrases);
         addPhraseToDisplay(phraseArray);
