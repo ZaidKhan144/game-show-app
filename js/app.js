@@ -1,24 +1,38 @@
-const qwertyDiv = document.getElementById('qwerty');
-const phraseDiv = document.getElementById('phrase');
-const startGameBtn = document.querySelector('.btn__reset');
-const ul = document.querySelector('ul');
-var missed = 0;
-
-var phrases = ['ass aa dd','ass aa dd','ass aa dd','ass aa dd','a'];
+var phrases = ['may be','timeline','i see','bye','k'];
 
 $("div button").mouseenter(function(){
 	$("<audio></audio>").attr({ 
-		'src':'audio/blop2.mp3', 
-		'volume':0.4,
+		'src':'audio/blop.aac', 
+		'volume':0.1,
 		'autoplay':'autoplay'
 	}).appendTo("body");
 });
 
+startGameBtn.addEventListener('click', ()=>{
+    setTimeout(function(){
+        $('#scoreboard').fadeIn(500); //scoreboard
+     }, 500);
+    setTimeout(function(){
+        $('.header').fadeIn(500); //header
+     }, 500);
+    setTimeout(function(){
+        $('#phrase').fadeIn(500); //phrases
+     }, 500);
+    setTimeout(function(){
+        $('.keyrow1').fadeIn(500); //keyrow1
+     }, 500);
+     setTimeout(function(){
+        $('.keyrow2').fadeIn(1000); //keyrow2
+     }, 500);
+     setTimeout(function(){
+        $('.keyrow3').fadeIn(1500); //keyrow3
+     }, 500);
+
+ });
+ 
 
 startGameBtn.addEventListener('click', () => {
-    const overlay = document.getElementById('overlay');
     overlay.style.display = 'none';
-
 });
 
 
@@ -32,8 +46,6 @@ const addPhraseToDisplay = arr => {
     
     for(let i =0 ; i<arr.length;i++){
         var listItem = document.createElement('li');
-        
-        
         listItem.innerHTML = arr[i];
         ul.appendChild(listItem);
         if(listItem.textContent === ' '){
@@ -59,7 +71,6 @@ const checkLetter = button => {
         if(button.textContent === checkLetter[i].textContent){
             checkLetter[i].classList.add('show');
             found = button;
-            // button.style.backgroundColor = 'black';
         }
     }
     return found;
