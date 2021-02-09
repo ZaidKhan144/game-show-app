@@ -147,6 +147,11 @@ button:hover{
   color: #FFFFFF;
 }
 
+.how-to{
+  font-size: 1.2em;
+  font-weight: 600;
+}
+
 .btn__reset {
   padding: 8px;
   margin: 50px auto;
@@ -156,6 +161,7 @@ button:hover{
   font-family: 'Yanone Kaffeesatz', sans-serif;
   letter-spacing: 2px;
   font-weight: bold;
+  cursor: pointer;
 }
 
 /* Overlay */

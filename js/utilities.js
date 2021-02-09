@@ -9,6 +9,7 @@ const keyrow3 = document.querySelector('.keyrow3');
 const scoreboard = document.querySelector('#scoreboard');
 const overlay = document.getElementById('overlay');
 var listItem = document.createElement('li');
+const howTo = document.querySelector('.how-to')
 var missed = 0;
 keyrow1.style.display = 'none';
 keyrow2.style.display = 'none';

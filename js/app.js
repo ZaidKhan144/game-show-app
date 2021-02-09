@@ -1,12 +1,13 @@
-var phrases = ['may be','timeline','i see','bye','k'];
+var phrases = ['alaska','hawaii','new jersy','oregon','louisiana','tennessee','missouri','wyoming','arkansas'];
 
-$("div button").mouseenter(function(){
-	$("<audio></audio>").attr({ 
-		'src':'audio/blop.aac', 
-		'volume':0.1,
+    // Audio
+  /* $("div button").mouseenter(function(){
+ 	$("<audio></audio>").attr({ 
+ 		'src':'audio/blop.aac', 
+ 		'volume':0.1,
 		'autoplay':'autoplay'
-	}).appendTo("body");
-});
+ 	}).appendTo("body");
+ }); */
 
 startGameBtn.addEventListener('click', ()=>{
     setTimeout(function(){
@@ -109,13 +110,15 @@ const checkWin = () => {
         startGameBtn.textContent = 'One More Now';
         overlay.style.display = 'flex';
         phraseDiv.style.display = 'none';
+        howTo.style.display = 'none'
     }
     if(missed >= 5){
         overlay.className = 'lose';
-        h3.textContent = 'LOL You Lost!';
+        h3.textContent = 'Sorry, you lost :(';
         startGameBtn.textContent = 'No, I got this.';
         overlay.style.display = 'flex';
         phraseDiv.style.display = 'none';
+        howTo.style.display = 'none'
     }
 
         reset();
@@ -142,7 +145,6 @@ const reset = () => {
             removeChosen[i].disabled = false;
         }
         
-
         const phraseArray = getRandomPhraseAsArray(phrases);
         addPhraseToDisplay(phraseArray);
     });
