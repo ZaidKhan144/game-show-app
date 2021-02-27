@@ -1,4 +1,4 @@
-# Guess States!
+# Guess States
 
 A guessing game that will present random US State names.
 
@@ -46,4 +46,14 @@ $ npm start
 - Prettier - Code formatter
 - GitHub Pages
 
+## Reflection
 
+The main goal of this project was to experiment interactivity with `DOM` using `JavaScript`. 
+
+This guessing game will present random US state names to guess from. Users may also keep track of the lives lost. On Guessing all the letters right, users will be directed to the winning page with an option to play again and vice versa.
+
+Implemented a random method to present a new state name on every turn. I have also coded the method check win by comparing the key pressed by phrase's letter so that users can keep track of lives lost.
+
+The technologies implemented in this project are `HTML`, `CSS`, `JavaScript`, and `jQuery`. I have used `jQuery` to animate the main page content, and I have also made different UI gradients for each background. 
+
+You can view the live version of the app here: https://zaidkhan144.github.io/game-show-app/
