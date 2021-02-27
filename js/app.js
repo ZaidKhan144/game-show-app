@@ -85,7 +85,6 @@ qwertyDiv.addEventListener('click', (e) =>{
         
         if(buttonPressed.className === 'chosen'){
             buttonPressed.disabled = true;
-
         }
         const letterFound = checkLetter(buttonPressed);
         const tries = document.querySelectorAll('.tries img');
